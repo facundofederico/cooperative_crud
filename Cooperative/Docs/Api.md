@@ -19,7 +19,7 @@
 ### Create Item Request
 
 ```js
-POST /Items
+POST /items
 ```
 
 ```json
@@ -37,7 +37,7 @@ POST /Items
 ```
 
 ```yml
-Location: {{host}}/Items/{{id}}
+Location: {{host}}/items/{{id}}
 ```
 
 ```json
@@ -54,7 +54,7 @@ Location: {{host}}/Items/{{id}}
 ### Get Item Request
 
 ```js
-GET /Items/{{id}}
+GET /items/{{id}}
 ```
 
 ### Get Item Response
@@ -77,7 +77,7 @@ GET /Items/{{id}}
 ### Update Item Request
 
 ```js
-PUT /Items/{{id}}
+PUT /items/{{id}}
 ```
 
 ```json
@@ -101,7 +101,7 @@ or
 ```
 
 ```yml
-Location: {{host}}/Items/{{id}}
+Location: {{host}}/items/{{id}}
 ```
 
 ## Delete Item
@@ -109,7 +109,7 @@ Location: {{host}}/Items/{{id}}
 ### Delete Item Request
 
 ```js
-DELETE /Items/{{id}}
+DELETE /items/{{id}}
 ```
 
 ### Delete Item Response

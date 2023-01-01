@@ -1,0 +1,3 @@
+@id = fd20ff76-e974-4b6e-a937-565ab154d94e
+
+GET http://localhost:5017/items/{{id}}

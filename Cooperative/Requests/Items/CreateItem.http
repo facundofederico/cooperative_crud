@@ -1,0 +1,8 @@
+POST http://localhost:5017/items
+Content-Type: application/json
+
+{
+    "name": "Head radiography",
+    "description": "X-ray radiography that goes from the base of the...",
+    "price": 2316.33
+}

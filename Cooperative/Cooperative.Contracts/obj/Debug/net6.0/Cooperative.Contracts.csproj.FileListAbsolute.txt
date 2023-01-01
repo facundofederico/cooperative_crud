@@ -1,0 +1,12 @@
+C:\Users\facuf\Dev\cooperative_crud\cooperative_crud\Cooperative\Cooperative.Contracts\bin\Debug\net6.0\Cooperative.Contracts.deps.json
+C:\Users\facuf\Dev\cooperative_crud\cooperative_crud\Cooperative\Cooperative.Contracts\bin\Debug\net6.0\Cooperative.Contracts.dll
+C:\Users\facuf\Dev\cooperative_crud\cooperative_crud\Cooperative\Cooperative.Contracts\bin\Debug\net6.0\Cooperative.Contracts.pdb
+C:\Users\facuf\Dev\cooperative_crud\cooperative_crud\Cooperative\Cooperative.Contracts\obj\Debug\net6.0\Cooperative.Contracts.csproj.AssemblyReference.cache
+C:\Users\facuf\Dev\cooperative_crud\cooperative_crud\Cooperative\Cooperative.Contracts\obj\Debug\net6.0\Cooperative.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\facuf\Dev\cooperative_crud\cooperative_crud\Cooperative\Cooperative.Contracts\obj\Debug\net6.0\Cooperative.Contracts.AssemblyInfoInputs.cache
+C:\Users\facuf\Dev\cooperative_crud\cooperative_crud\Cooperative\Cooperative.Contracts\obj\Debug\net6.0\Cooperative.Contracts.AssemblyInfo.cs
+C:\Users\facuf\Dev\cooperative_crud\cooperative_crud\Cooperative\Cooperative.Contracts\obj\Debug\net6.0\Cooperative.Contracts.csproj.CoreCompileInputs.cache
+C:\Users\facuf\Dev\cooperative_crud\cooperative_crud\Cooperative\Cooperative.Contracts\obj\Debug\net6.0\Cooperative.Contracts.dll
+C:\Users\facuf\Dev\cooperative_crud\cooperative_crud\Cooperative\Cooperative.Contracts\obj\Debug\net6.0\refint\Cooperative.Contracts.dll
+C:\Users\facuf\Dev\cooperative_crud\cooperative_crud\Cooperative\Cooperative.Contracts\obj\Debug\net6.0\Cooperative.Contracts.pdb
+C:\Users\facuf\Dev\cooperative_crud\cooperative_crud\Cooperative\Cooperative.Contracts\obj\Debug\net6.0\ref\Cooperative.Contracts.dll
