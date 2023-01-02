@@ -3,7 +3,7 @@ using Cooperative.Models;
 
 namespace Cooperative.Services.Items;
 
-public class ItemService : IItemService
+public class DictionaryItemService : IItemService
 {
     private static readonly Dictionary<Guid, Item> _items = new();
 
