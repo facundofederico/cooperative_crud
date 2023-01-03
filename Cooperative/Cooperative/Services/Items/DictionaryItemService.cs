@@ -1,5 +1,6 @@
 using System.Data;
 using Cooperative.Models;
+using Cooperative.Models.Exceptions;
 
 namespace Cooperative.Services.Items;
 
@@ -7,57 +8,46 @@ public class DictionaryItemService : IItemService
 {
     private static readonly Dictionary<Guid, Item> _items = new();
 
-    public void CreateItem(Item item)
+    public Task CreateItem(Item item)
     {
         if (_items.TryGetValue(item.Id, out Item? existing_item))
         {
-            var msg = String.Format("An item with id: {0} already exists", item.Id);
-
-            throw new DuplicateNameException(msg);
+            throw new ItemAlreadyExistsException();
         }
         else
         {
             _items.Add(item.Id, item);
         }
+
+        return Task.CompletedTask;
     }
     
-    public Item GetItem(Guid id)
+    public Task<Item> GetItem(Guid id)
     {
         if (_items.TryGetValue(id, out Item? item))
         {
-            return item;
+            return Task.FromResult(item);
         }
         else
         {
-            var msg = String.Format("The item with id: {0} was not found", id);
-
-            throw new KeyNotFoundException(msg);
+            throw new ItemNotFoundException();
         }
     }
     
-    public void UpsertItem(Item item)
+    public Task UpsertItem(Item item)
     {
-        if (_items.TryGetValue(item.Id, out Item? existing_item))
-        {
-            _items[item.Id] = item;
-        }
-        else
-        {
-            _items.Add(item.Id, item);
+        _items[item.Id] = item;
 
-            var msg = String.Format("The item with id: {0} was not found", item.Id);
-
-            throw new KeyNotFoundException();
-        }
+        return Task.CompletedTask;
     }
     
-    public void DeleteItem(Guid id)
+    public Task DeleteItem(Guid id)
     {
         if (!_items.Remove(id))
         {
-            var msg = String.Format("The item with id: {0} was not found", id);
-
-            throw new KeyNotFoundException(msg);
+            throw new ItemNotFoundException();
         }
+        
+        return Task.CompletedTask;
     }
 }

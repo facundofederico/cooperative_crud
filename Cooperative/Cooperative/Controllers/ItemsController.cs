@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Cooperative.Contracts.Items;
 using Cooperative.Models;
+using Cooperative.Models.Exceptions;
 using Cooperative.Services.Items;
 
 namespace Cooperative.Controllers;
@@ -17,7 +18,7 @@ public class ItemsController : ControllerBase
     }
 
     [HttpPost()]
-    public IActionResult CreateItem(CreateItemRequest request)
+    public async Task<IActionResult> CreateItem(CreateItemRequest request)
     {
         Item item;
         try
@@ -33,7 +34,7 @@ public class ItemsController : ControllerBase
             return BadRequest();
         }
         
-        this._itemService.CreateItem(item);
+        await this._itemService.CreateItem(item);
 
         var response = MapItemToResponse(item);
         
@@ -44,24 +45,24 @@ public class ItemsController : ControllerBase
     }
 
     [HttpGet("{id:guid}")]
-    public IActionResult GetItem(Guid id)
+    public async Task<IActionResult> GetItem(Guid id)
     {
         try
         {
-            Item item = _itemService.GetItem(id);
+            Item item = await _itemService.GetItem(id);
 
             var response = MapItemToResponse(item);
 
             return Ok(response);
         }
-        catch (KeyNotFoundException)
+        catch (ItemNotFoundException)
         {
             return NotFound();
         }
     }
 
     [HttpPut("{id:guid}")]
-    public IActionResult UpsertItem(Guid id, UpsertItemRequest request)
+    public async Task<IActionResult> UpsertItem(Guid id, UpsertItemRequest request)
     {
         Item item;
         try
@@ -78,33 +79,21 @@ public class ItemsController : ControllerBase
             return BadRequest();
         }
 
-        try
-        {
-            _itemService.UpsertItem(item);
+        await _itemService.UpsertItem(item);
 
-            return NoContent();
-        }
-        catch (KeyNotFoundException)
-        {
-            var response = MapItemToResponse(item);
-
-            return CreatedAtAction(
-                actionName: nameof(GetItem),
-                routeValues: new { id = item.Id },
-                value: response);
-        }
+        return NoContent();
     }
 
     [HttpDelete("{id:guid}")]
-    public IActionResult DeleteItem(Guid id)
+    public async Task<IActionResult> DeleteItem(Guid id)
     {
         try
         {
-            _itemService.DeleteItem(id);
+            await _itemService.DeleteItem(id);
 
             return NoContent();
         }
-        catch (KeyNotFoundException)
+        catch (ItemNotFoundException)
         {
             return NotFound();
         }
