@@ -77,10 +77,9 @@ public abstract class ItemsServiceTests
             description: "Description",
             price: 1.0m
         );
-
-        // Act
         await itemService.CreateItem(item);
 
+        // Act
         var obtainedItem = await itemService.GetItem(item.Id);
 
         // Assert
@@ -99,6 +98,73 @@ public abstract class ItemsServiceTests
 
         // Assert
         await Assert.ThrowsAsync<ItemNotFoundException>(() => itemService.GetItem(id));
+    }
+
+    [Fact]
+    public async void GetItems_ExistingItems_ShouldGetTheItems()
+    {
+        // Arrange
+        var itemService = GetService();
+        var item1 = new Item(
+            name: "Name1",
+            description: "Description",
+            price: 1.0m
+        );
+        var item2 = new Item(
+            name: "Name2",
+            description: "Description",
+            price: 1.0m
+        );
+        var item3 = new Item(
+            name: "Name3",
+            description: "Description",
+            price: 1.0m
+        );
+        
+        await itemService.CreateItem(item1);
+        await itemService.CreateItem(item2);
+        await itemService.CreateItem(item3);
+
+        var requestedItems = new[] { item1.Id, item2.Id };
+
+        // Act
+        var obtainedItems = await itemService.GetItems(requestedItems);
+
+        // Assert
+        Assert.Equal(2, obtainedItems.Count());
+        Assert.True(obtainedItems.Any(x => x.Id == item1.Id));
+        Assert.True(obtainedItems.Any(x => x.Id == item2.Id));
+    }
+
+    [Fact]
+    public async void GetItems_InexistentItem_ShouldThrowException()
+    {
+        // Arrange
+        var itemService = GetService();
+        var item = new Item(
+            name: "Name",
+            description: "Description",
+            price: 1.0m
+        );
+        await itemService.CreateItem(item);
+
+        var requestedItems = new[] {item.Id, Guid.NewGuid()};
+
+        // Assert
+        await Assert.ThrowsAsync<ItemNotFoundException>(() =>
+            itemService.GetItems(requestedItems));
+    }
+
+    [Fact]
+    public async void GetItems_EmptyRequest_ShouldReturnEmptyList()
+    {
+        // Arrange
+        var itemService = GetService();
+
+        var items = await itemService.GetItems(new List<Guid>());
+
+        // Assert
+        Assert.Empty(items);
     }
 
     [Fact]
