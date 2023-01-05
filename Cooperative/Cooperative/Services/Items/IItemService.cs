@@ -11,6 +11,10 @@ public interface IItemService
     // Gets the item that matches the provided id.
     // Throws an ItemNotFoundException if an item with that id was not found.
     Task<Item> GetItem(Guid id);
+
+    // Gets the items that match the provided ids.
+    // Throws an ItemNotFoundException if an item was not found.
+    Task<IEnumerable<Item>> GetItems(IEnumerable<Guid> ids);
     
     // Updates the item that matches the provided id.
     // If not found, creates it.

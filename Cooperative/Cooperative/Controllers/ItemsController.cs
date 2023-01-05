@@ -36,7 +36,7 @@ public class ItemsController : ControllerBase
         
         await this._itemService.CreateItem(item);
 
-        var response = MapItemToResponse(item);
+        var response = Mappings.MapItemToResponse(item);
         
         return CreatedAtAction(
             actionName: nameof(GetItem),
@@ -51,7 +51,7 @@ public class ItemsController : ControllerBase
         {
             Item item = await _itemService.GetItem(id);
 
-            var response = MapItemToResponse(item);
+            var response = Mappings.MapItemToResponse(item);
 
             return Ok(response);
         }
@@ -97,17 +97,5 @@ public class ItemsController : ControllerBase
         {
             return NotFound();
         }
-    }
-
-    private static ItemResponse MapItemToResponse(Item item)
-    {
-        var response = new ItemResponse(
-                Id: item.Id,
-                Name: item.Name,
-                Description: item.Description,
-                Price: item.Price
-            );
-
-        return response;
     }
 }

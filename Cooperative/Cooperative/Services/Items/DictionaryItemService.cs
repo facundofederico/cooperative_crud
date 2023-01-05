@@ -33,6 +33,15 @@ public class DictionaryItemService : IItemService
             throw new ItemNotFoundException();
         }
     }
+
+    public async Task<IEnumerable<Item>> GetItems(IEnumerable<Guid> ids)
+    {
+        var tasks = ids.Select(x => GetItem(x));
+
+        var items = await Task.WhenAll(tasks);
+
+        return items;
+    }
     
     public Task UpsertItem(Item item)
     {

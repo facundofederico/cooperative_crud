@@ -1,0 +1,19 @@
+GET http://localhost:5017/budgets
+Content-Type: application/json
+
+{
+    "discount": 0.0,
+    "items":
+    {[
+        {
+            "itemId": "fd20ff76-e974-4b6e-a937-565ab154d94e",
+            "quantity": 3,
+            "discount": 0.1
+        },
+        {
+            "itemId": "fd20ff76-e974-4b6e-a937-56abe154dfff",
+            "quantity": 1,
+            "discount": 0.0
+        }
+    ]}
+}
