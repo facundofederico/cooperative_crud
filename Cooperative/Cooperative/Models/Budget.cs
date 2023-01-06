@@ -8,8 +8,8 @@ public class Budget
     // Gets the discount for the budget.
     public decimal Discount { get; }
 
-    // Gets a description for the item.
-    public IEnumerable<BudgetItem> Detail { get; } = new List<BudgetItem>();
+    // Gets budget items.
+    public List<BudgetItem> Detail { get; } = new();
 
     public Budget(DateTime date, decimal discount)
     {
@@ -19,12 +19,12 @@ public class Budget
 
     public void AddItem(BudgetItem item)
     {
-        this.Detail.Append(item);
+        this.Detail.Add(item);
     }
 
     public decimal GetTotal()
     {
-        var subtotal = Detail.Sum(x => x.GetTotal());
+        var subtotal = this.Detail.Sum(x => x.GetTotal());
 
         return subtotal * (1 - this.Discount);
     }

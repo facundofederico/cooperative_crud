@@ -2,18 +2,18 @@ GET http://localhost:5017/budgets
 Content-Type: application/json
 
 {
-    "discount": 0.0,
+    "discount": 0.15,
     "items":
-    {[
+    [
         {
-            "itemId": "fd20ff76-e974-4b6e-a937-565ab154d94e",
+            "itemId": "f2441103-5068-4272-b217-1bc3d05137dd",
             "quantity": 3,
             "discount": 0.1
         },
         {
-            "itemId": "fd20ff76-e974-4b6e-a937-56abe154dfff",
+            "itemId": "3bd96d8a-ec69-447a-ae38-33c42af6bb5a",
             "quantity": 1,
             "discount": 0.0
         }
-    ]}
+    ]
 }

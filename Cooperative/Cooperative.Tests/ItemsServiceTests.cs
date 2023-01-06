@@ -132,8 +132,8 @@ public abstract class ItemsServiceTests
 
         // Assert
         Assert.Equal(2, obtainedItems.Count());
-        Assert.True(obtainedItems.Any(x => x.Id == item1.Id));
-        Assert.True(obtainedItems.Any(x => x.Id == item2.Id));
+        Assert.Contains(obtainedItems, x => x.Id == item1.Id);
+        Assert.Contains(obtainedItems, x => x.Id == item2.Id);
     }
 
     [Fact]
