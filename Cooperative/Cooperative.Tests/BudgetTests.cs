@@ -53,10 +53,7 @@ public class BudgetTests
             quantity: 5,
             discount: 0.3m
         );
-        var budget = new Budget(
-            date: DateTime.UtcNow,
-            discount: 0.2m
-        );
+        var budget = new Budget(discount: 0.2m);
         budget.AddItem(budgetItem1);
         budget.AddItem(budgetItem2);
 
@@ -91,10 +88,7 @@ public class BudgetTests
             quantity: 5,
             discount: 0.3m
         );
-        var budget = new Budget(
-            date: DateTime.UtcNow,
-            discount: 0.2m
-        );
+        var budget = new Budget(discount: 0.2m);
         budget.AddItem(budgetItem1);
         budget.AddItem(budgetItem2);
 

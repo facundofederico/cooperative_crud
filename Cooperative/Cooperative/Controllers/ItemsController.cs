@@ -29,9 +29,17 @@ public class ItemsController : ControllerBase
                 price: request.Price
             );
         }
-        catch (ArgumentException)
+        catch (InvalidNameException)
         {
-            return BadRequest();
+            return BadRequest(ErrorResponses.InvalidName);
+        }
+        catch (InvalidDescriptionException)
+        {
+            return BadRequest(ErrorResponses.InvalidDescription);
+        }
+        catch (InvalidPriceException)
+        {
+            return BadRequest(ErrorResponses.InvalidPrice);
         }
         
         await this._itemService.CreateItem(item);
@@ -74,9 +82,17 @@ public class ItemsController : ControllerBase
                 price: request.Price
             );
         }
-        catch (ArgumentException)
+        catch (InvalidNameException)
         {
-            return BadRequest();
+            return BadRequest(ErrorResponses.InvalidName);
+        }
+        catch (InvalidDescriptionException)
+        {
+            return BadRequest(ErrorResponses.InvalidDescription);
+        }
+        catch (InvalidPriceException)
+        {
+            return BadRequest(ErrorResponses.InvalidPrice);
         }
 
         await _itemService.UpsertItem(item);

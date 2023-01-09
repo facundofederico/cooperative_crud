@@ -19,6 +19,10 @@
 
 ## Create Item
 
+> :warning: The **name** must be 80 characters or less.
+> :warning: The **name** and **description** cannot be empty.
+> :warning: The **price** cannot be a negative number.
+
 ### Create Item Request
 
 ```js
@@ -122,6 +126,8 @@ DELETE /items/{{id}}
 ```
 
 ## Get Budget
+
+> :warning: The **discount** must be a decimal number between 0 and 1.
 
 ### Get Budget Request
 

@@ -37,21 +37,30 @@ public class BudgetsController : ControllerBase
             return BadRequest();
         }
 
-        var budget = new Budget(
-            date: DateTime.UtcNow,
-            discount: request.Discount
-        );
+        var budget = new Budget(discount: request.Discount);
 
         foreach (Item item in items)
         {
             var requestItem = request.Items.First(x => x.ItemId == item.Id);
 
-            var budgetItem = new BudgetItem(
-                item: item,
-                quantity: requestItem.Quantity,
-                discount: requestItem.Discount);
-
-            budget.AddItem(budgetItem);
+            try
+            {
+                var budgetItem = new BudgetItem(
+                    item: item,
+                    quantity: requestItem.Quantity,
+                    discount: requestItem.Discount
+                );
+                
+                budget.AddItem(budgetItem);
+            }
+            catch (InvalidQuantityException)
+            {
+                return BadRequest(ErrorResponses.InvalidQuantity);
+            }
+            catch (InvalidDiscountException)
+            {
+                return BadRequest(ErrorResponses.InvalidDiscount);
+            }
         };
 
         var response = Mappings.MapToBudgetResponse(budget);
